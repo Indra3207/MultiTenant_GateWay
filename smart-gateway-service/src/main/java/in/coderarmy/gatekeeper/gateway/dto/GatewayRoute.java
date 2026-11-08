@@ -15,6 +15,7 @@ public class GatewayRoute {
 
     private Long id;
     private Long organizationId;
+    private String organizationName;
     private String routeId;
     private String name;
     private String pathPattern;

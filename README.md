@@ -131,7 +131,124 @@ cd smart-gateway-service
 Once running:
 - **Base URL**: `http://localhost:8080`
 - **Health Check**: `http://localhost:8080/health`
-- The Gateway automatically authenticates with `http://localhost:8081/api/auth/login` and synchronizes active routes.
+- The Gateway automatically authenticates with `http://localhost:8081/api/auth/login` and synchronizes active routes into its in-memory `RouteRegistry`.
+- If API Management is temporarily offline, the Gateway starts gracefully with an empty registry and syncs when API Management becomes available or upon Kafka event notification.
+
+---
+
+## Gateway Capabilities & Verification Demo
+
+The Smart Gateway runtime provides:
+- **Dynamic In-Memory Route Registry**: Atomically swapped route snapshots with exact-path priority over wildcard patterns.
+- **Resilient Startup & Kafka Sync**: Non-blocking startup with real-time route invalidation via Kafka.
+- **Path Rewriting**: Maps `/tenant-slug/resource/**` to `targetBaseUrl + targetPathPrefix + remainingPath`.
+- **Query Parameter Preservation**: Forwards query strings transparently to upstream targets.
+- **HTTP Method Enforcement**: Returns `405 Method Not Allowed` with `Allow` header when an unsupported HTTP verb is invoked.
+- **Hop-by-Hop Header Stripping**: Cleans standard hop-by-hop headers (`Connection`, `Keep-Alive`, `Upgrade`, `Transfer-Encoding`, etc.) before forwarding and replying.
+- **Response Timeout**: Enforces per-route `responseTimeoutMs` and returns `504 Gateway Timeout` on slow backends.
+- **In-Memory Fixed-Window Rate Limiter**: Enforces `requestsPerMinute` per route and client IP, returning `429 Too Many Requests` with `Retry-After: 60`.
+- **Upstream Safety (SSRF Protection)**: Rejects requests targeting cloud metadata (`169.254.169.254`), link-local, and private addresses by default (`gateway.safety.development-mode=true` permits local mock backends during development).
+
+### End-to-End Verification Demo (Windows PowerShell)
+
+Follow this complete step-by-step workflow in PowerShell. The platform begins with only seeded platform administrator credentials (`platform-admin` / `platform123`).
+
+#### 1. Authenticate as Platform Admin
+```powershell
+$loginBody = @{ username = "platform-admin"; password = "platform123" } | ConvertTo-Json
+$platformAuth = Invoke-RestMethod -Uri "http://localhost:8081/api/auth/login" -Method Post -Body $loginBody -ContentType "application/json"
+$platformToken = $platformAuth.token
+```
+
+#### 2. Provision Organization (FoodFast Inc)
+```powershell
+$orgBody = @{ name = "FoodFast Inc"; slug = "foodfast" } | ConvertTo-Json
+$org = Invoke-RestMethod -Uri "http://localhost:8081/api/platform/organizations" `
+    -Method Post -Body $orgBody -ContentType "application/json" `
+    -Headers @{ Authorization = "Bearer $platformToken" }
+$orgId = $org.id
+```
+
+#### 3. Assign Tenant Admin Account
+```powershell
+$adminBody = @{ username = "foodfast_admin"; password = "Password123!"; enabled = $true } | ConvertTo-Json
+$tenantAdmin = Invoke-RestMethod -Uri "http://localhost:8081/api/platform/organizations/$orgId/tenant-admin" `
+    -Method Post -Body $adminBody -ContentType "application/json" `
+    -Headers @{ Authorization = "Bearer $platformToken" }
+```
+
+#### 4. Activate the Organization
+```powershell
+$statusBody = @{ status = "ACTIVE" } | ConvertTo-Json
+$activeOrg = Invoke-RestMethod -Uri "http://localhost:8081/api/platform/organizations/$orgId/status" `
+    -Method Patch -Body $statusBody -ContentType "application/json" `
+    -Headers @{ Authorization = "Bearer $platformToken" }
+```
+
+#### 5. Authenticate as Tenant Admin
+```powershell
+$tenantLogin = @{ username = "foodfast_admin"; password = "Password123!" } | ConvertTo-Json
+$tenantAuth = Invoke-RestMethod -Uri "http://localhost:8081/api/auth/login" -Method Post -Body $tenantLogin -ContentType "application/json"
+$tenantToken = $tenantAuth.token
+```
+
+#### 6. Configure Gateway Route
+```powershell
+$routeBody = @{
+    routeId = "orders-v1"
+    name = "Orders Service"
+    pathPattern = "/foodfast/orders/**"
+    targetBaseUrl = "https://httpbin.org"
+    targetPathPrefix = "/anything/orders"
+    requestsPerMinute = 5
+    responseTimeoutMs = 3000
+    active = $true
+    allowedMethods = @("GET", "POST")
+} | ConvertTo-Json
+
+$route = Invoke-RestMethod -Uri "http://localhost:8081/api/tenant/routes" `
+    -Method Post -Body $routeBody -ContentType "application/json" `
+    -Headers @{ Authorization = "Bearer $tenantToken" }
+```
+*The Control Plane saves version 1 and emits a Kafka event; the Smart Gateway automatically syncs the new active route.*
+
+#### 7. Forward Requests via the Smart Gateway (Port 8080)
+
+##### A. Successful GET with Path Rewriting & Query Parameters
+```powershell
+curl.exe -i "http://localhost:8080/foodfast/orders/items/42?status=shipped&category=food"
+```
+*Gateway forwards to `https://httpbin.org/anything/orders/items/42?status=shipped&category=food` and returns `200 OK`.*
+
+##### B. Successful POST with JSON Body
+```powershell
+curl.exe -i -X POST http://localhost:8080/foodfast/orders/create `
+  -H "Content-Type: application/json" `
+  -d '{"item": "Burger", "qty": 2}'
+```
+*Gateway forwards body and returns upstream `200 OK` with mirrored payload.*
+
+##### C. Method Not Allowed (405)
+```powershell
+# DELETE is not permitted in allowedMethods
+curl.exe -i -X DELETE http://localhost:8080/foodfast/orders/42
+```
+*Returns `HTTP/1.1 405 Method Not Allowed` with `Allow: GET, POST` header.*
+
+##### D. Route Not Found (404)
+```powershell
+curl.exe -i http://localhost:8080/unknown/service
+```
+*Returns `HTTP/1.1 404 Not Found` with `{"error": "Not Found", ...}`.*
+
+##### E. Rate Limiting Enforced (429)
+```powershell
+# Send 7 rapid requests exceeding the 5 req/min quota
+1..7 | ForEach-Object {
+    curl.exe -s -o NUL -w "%{http_code}`n" http://localhost:8080/foodfast/orders/items
+}
+```
+*Outputs `200` five times, followed by `429` on requests 6 and 7 with `Retry-After: 60`.*
 
 ---
 
