@@ -1,6 +1,5 @@
 package in.coderarmy.gatekeeper.management.dto.requestDto;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -9,9 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -45,14 +42,9 @@ public class RouteRequest {
     @Min(1)
     private Integer responseTimeoutMs;
 
-    private boolean idempotencyEnabled;
     private boolean active;
 
     @NotEmpty
     private Set<@NotBlank String> allowedMethods
             = new HashSet<String>();
-
-    @NotNull
-    private List<@Valid HeaderRuleRequest> headerRules
-            = new ArrayList<HeaderRuleRequest>();
 }

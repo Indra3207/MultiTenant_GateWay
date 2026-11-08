@@ -37,7 +37,7 @@
             "tenantAdminPassword", "tenantAdminEnabled", "deleteTenantAdminButton", "routeDialog", "routeForm",
             "routeDialogTitle", "routePk", "routeId", "routeName", "routePathPattern", "routeTargetBaseUrl",
             "routeTargetPathPrefix", "routeRequestsPerMinute", "routeResponseTimeout", "routeAllowedMethods",
-            "routeIdempotency", "routeActive", "addHeaderRuleButton", "headerRulesContainer", "versionsDialog",
+            "routeActive", "versionsDialog",
             "versionsDialogTitle", "versionsTimeline", "toastContainer"
         ];
 
@@ -64,8 +64,6 @@
         elements.routeSearch.addEventListener("input", renderRoutes);
         elements.routesTableBody.addEventListener("click", handleRouteAction);
         elements.routeForm.addEventListener("submit", saveRoute);
-        elements.addHeaderRuleButton.addEventListener("click", function() { addHeaderRule(); });
-        elements.headerRulesContainer.addEventListener("click", removeHeaderRule);
         elements.refreshAuditButton.addEventListener("click", loadAudits);
 
         document.querySelectorAll(".close-dialog").forEach(function(button) {
@@ -288,7 +286,7 @@
     function renderTenantOverview() {
         var active = state.routes.filter(function(route) { return route.active; }).length;
         var policies = state.routes.filter(function(route) {
-            return route.requestsPerMinute || route.idempotencyEnabled || route.headerRules.length;
+            return route.requestsPerMinute;
         }).length;
         var name = state.organization ? state.organization.name : "Your tenant";
         elements.overviewSection.innerHTML =
@@ -301,7 +299,7 @@
             '</div>' +
             '<div class="spotlight-card"><div><p class="eyebrow" style="color:var(--lime)">GATEWAY CONFIGURATION</p>' +
             '<h2>Shape traffic before it reaches your services.</h2>' +
-            '<p>Define paths, destinations, methods, rate limits, idempotency and header transformations. Every mutation receives a durable version.</p></div>' +
+            '<p>Define paths, destinations, methods, rate limits and timeouts. Every mutation receives a durable version.</p></div>' +
             '<button class="button" type="button" id="overviewTenantAction">Manage routes →</button></div>';
         document.getElementById("overviewTenantAction").addEventListener("click", function() { navigate("routes"); });
     }
@@ -520,8 +518,6 @@
         elements.routesTableBody.innerHTML = routes.map(function(route) {
             var tags = [];
             if(route.requestsPerMinute) { tags.push(route.requestsPerMinute + "/min"); }
-            if(route.idempotencyEnabled) { tags.push("Idempotent"); }
-            if(route.headerRules.length) { tags.push(route.headerRules.length + " headers"); }
             if(!tags.length) { tags.push("Base routing"); }
             return '<tr>' +
                 '<td><div class="cell-primary"><strong>' + escapeHtml(route.name) + '</strong><small>' + escapeHtml(route.routeId) + ' · ' + escapeHtml(route.allowedMethods.join(", ")) + '</small></div></td>' +
@@ -566,7 +562,6 @@
 
     function openRouteDialog(route) {
         elements.routeForm.reset();
-        elements.headerRulesContainer.replaceChildren();
         elements.routePk.value = route ? route.id : "";
         elements.routeDialogTitle.textContent = route ? "Edit route" : "New route";
         elements.routeId.value = route ? route.routeId : "";
@@ -578,36 +573,9 @@
         elements.routeRequestsPerMinute.value = route && route.requestsPerMinute ? route.requestsPerMinute : "";
         elements.routeResponseTimeout.value = route ? route.responseTimeoutMs : 3000;
         elements.routeAllowedMethods.value = route ? route.allowedMethods.join(", ") : "GET";
-        elements.routeIdempotency.checked = route ? route.idempotencyEnabled : false;
         elements.routeActive.checked = route ? route.active : false;
-        if(route) {
-            route.headerRules.forEach(addHeaderRule);
-        }
         elements.routeDialog.showModal();
         setTimeout(function() { (route ? elements.routeName : elements.routeId).focus(); }, 30);
-    }
-
-    function addHeaderRule(rule) {
-        var row = document.createElement("div");
-        row.className = "rule-row";
-        row.innerHTML =
-            '<select class="rule-direction" aria-label="Header direction"><option value="REQUEST">Request</option><option value="RESPONSE">Response</option></select>' +
-            '<select class="rule-action" aria-label="Header action"><option value="ADD">Add</option><option value="REMOVE">Remove</option></select>' +
-            '<input class="rule-name" placeholder="Header name" maxlength="200" aria-label="Header name" required>' +
-            '<input class="rule-value" placeholder="Header value" maxlength="2000" aria-label="Header value">' +
-            '<button class="icon-button remove-rule" type="button" aria-label="Remove header rule">×</button>';
-        row.querySelector(".rule-direction").value = rule && rule.direction ? rule.direction : "REQUEST";
-        row.querySelector(".rule-action").value = rule && rule.action ? rule.action : "ADD";
-        row.querySelector(".rule-name").value = rule && rule.headerName ? rule.headerName : "";
-        row.querySelector(".rule-value").value = rule && rule.headerValue ? rule.headerValue : "";
-        elements.headerRulesContainer.appendChild(row);
-    }
-
-    function removeHeaderRule(event) {
-        var button = event.target.closest(".remove-rule");
-        if(button) {
-            button.closest(".rule-row").remove();
-        }
     }
 
     async function saveRoute(event) {
@@ -616,15 +584,6 @@
         var methods = elements.routeAllowedMethods.value.split(",").map(function(method) {
             return method.trim().toUpperCase();
         }).filter(Boolean);
-        var headerRules = Array.prototype.map.call(elements.headerRulesContainer.querySelectorAll(".rule-row"), function(row) {
-            var action = row.querySelector(".rule-action").value;
-            return {
-                direction: row.querySelector(".rule-direction").value,
-                action: action,
-                headerName: row.querySelector(".rule-name").value.trim(),
-                headerValue: action === "REMOVE" ? null : row.querySelector(".rule-value").value.trim()
-            };
-        });
         var body = {
             routeId: elements.routeId.value.trim(),
             name: elements.routeName.value.trim(),
@@ -633,10 +592,8 @@
             targetPathPrefix: elements.routeTargetPathPrefix.value.trim(),
             requestsPerMinute: elements.routeRequestsPerMinute.value ? Number(elements.routeRequestsPerMinute.value) : null,
             responseTimeoutMs: Number(elements.routeResponseTimeout.value),
-            idempotencyEnabled: elements.routeIdempotency.checked,
             active: elements.routeActive.checked,
-            allowedMethods: methods,
-            headerRules: headerRules
+            allowedMethods: methods
         };
         var submit = event.submitter;
         setButtonLoading(submit, true, "Saving...");

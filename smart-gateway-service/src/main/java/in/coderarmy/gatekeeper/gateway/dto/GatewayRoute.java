@@ -5,9 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -24,11 +22,9 @@ public class GatewayRoute {
     private String targetPathPrefix;
     private Integer requestsPerMinute;
     private Integer responseTimeoutMs;
-    private boolean idempotencyEnabled;
     private boolean active;
     private Long configurationVersion;
     private Set<String> allowedMethods = new HashSet<String>();
-    private List<HeaderRule> headerRules = new ArrayList<HeaderRule>();
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

@@ -1,6 +1,5 @@
 package in.coderarmy.gatekeeper.management.service;
 
-import in.coderarmy.gatekeeper.management.dto.requestDto.HeaderRuleRequest;
 import in.coderarmy.gatekeeper.management.dto.requestDto.RouteRequest;
 import in.coderarmy.gatekeeper.management.dto.requestDto.RouteStatusRequest;
 import in.coderarmy.gatekeeper.management.dto.responseDto.AuditRecordResponse;
@@ -11,7 +10,6 @@ import in.coderarmy.gatekeeper.management.entity.ControlPlaneAuditRecord;
 import in.coderarmy.gatekeeper.management.entity.Organization;
 import in.coderarmy.gatekeeper.management.entity.OrganizationStatus;
 import in.coderarmy.gatekeeper.management.entity.RouteConfigurationVersion;
-import in.coderarmy.gatekeeper.management.entity.RouteHeaderRule;
 import in.coderarmy.gatekeeper.management.event.GatewayConfigurationEventService;
 import in.coderarmy.gatekeeper.management.exception.ApiException;
 import in.coderarmy.gatekeeper.management.repository.ApiRouteRepository;
@@ -203,23 +201,9 @@ public class RouteService {
         route.setTargetPathPrefix(request.getTargetPathPrefix());
         route.setRequestsPerMinute(request.getRequestsPerMinute());
         route.setResponseTimeoutMs(request.getResponseTimeoutMs());
-        route.setIdempotencyEnabled(request.isIdempotencyEnabled());
         route.setActive(request.isActive());
         route.setUpdatedAt(LocalDateTime.now());
         route.setAllowedMethods(normalizeMethods(request.getAllowedMethods()));
-
-        route.getHeaderRules().clear();
-        for(HeaderRuleRequest ruleRequest : request.getHeaderRules()) {
-            RouteHeaderRule rule = new RouteHeaderRule();
-            rule.setRoute(route);
-            rule.setDirection(ruleRequest.getDirection().toUpperCase(Locale.ENGLISH));
-            rule.setAction(ruleRequest.getAction().toUpperCase(Locale.ENGLISH));
-            rule.setHeaderName(ruleRequest.getHeaderName());
-            rule.setHeaderValue(ruleRequest.getHeaderValue());
-            rule.setCreatedAt(LocalDateTime.now());
-            rule.setUpdatedAt(LocalDateTime.now());
-            route.getHeaderRules().add(rule);
-        }
     }
 
     private void validate(RouteRequest request, Organization organization) {
@@ -246,23 +230,6 @@ public class RouteService {
         }
 
         normalizeMethods(request.getAllowedMethods());
-
-        for(HeaderRuleRequest rule : request.getHeaderRules()) {
-            String direction = rule.getDirection().toUpperCase(Locale.ENGLISH);
-            String action = rule.getAction().toUpperCase(Locale.ENGLISH);
-            if(!"REQUEST".equals(direction) && !"RESPONSE".equals(direction)) {
-                throw new ApiException(HttpStatus.BAD_REQUEST,
-                        "Header direction must be REQUEST or RESPONSE");
-            }
-            if(!"ADD".equals(action) && !"REMOVE".equals(action)) {
-                throw new ApiException(HttpStatus.BAD_REQUEST,
-                        "Header action must be ADD or REMOVE");
-            }
-            if("ADD".equals(action) &&
-                    (rule.getHeaderValue() == null || rule.getHeaderValue().trim().isEmpty())) {
-                throw new ApiException(HttpStatus.BAD_REQUEST, "ADD header rules require headerValue");
-            }
-        }
     }
 
     private Set<String> normalizeMethods(Set<String> methods) {

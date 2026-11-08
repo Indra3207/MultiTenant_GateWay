@@ -12,6 +12,8 @@ import tools.jackson.databind.ObjectMapper;
 @Component
 public class GatewayConfigurationKafkaPublisher {
 
+    private static final Logger logger = LoggerFactory.getLogger(GatewayConfigurationKafkaPublisher.class);
+
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
     private final String topic;
@@ -32,10 +34,18 @@ public class GatewayConfigurationKafkaPublisher {
 
         try {
             kafkaTemplate.send(topic, key, objectMapper.writeValueAsString(event))
-                    .whenComplete((result, exception) -> {});
+                    .whenComplete((result, exception) -> {
+                        if (exception == null) {
+                            logger.info("Successfully published gateway configuration event {} with key {} to topic {}",
+                                    event.getEventId(), key, topic);
+                        } else {
+                            logger.error("Failed to publish gateway configuration event {} with key {} to topic {}",
+                                    event.getEventId(), key, topic, exception);
+                        }
+                    });
         }
-        catch(Exception exception) {
-            System.out.println("Could not create Gateway configuration event " + event.getEventId());
+        catch (Exception exception) {
+            logger.error("Failed to serialize or initiate gateway configuration event {}", event.getEventId(), exception);
         }
     }
 }
