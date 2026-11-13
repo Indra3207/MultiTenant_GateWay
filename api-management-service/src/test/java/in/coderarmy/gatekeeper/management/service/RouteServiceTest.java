@@ -7,7 +7,6 @@ import in.coderarmy.gatekeeper.management.entity.ApiRoute;
 import in.coderarmy.gatekeeper.management.entity.Organization;
 import in.coderarmy.gatekeeper.management.entity.OrganizationStatus;
 import in.coderarmy.gatekeeper.management.entity.RouteConfigurationVersion;
-import in.coderarmy.gatekeeper.management.event.GatewayConfigurationEventService;
 import in.coderarmy.gatekeeper.management.exception.ApiException;
 import in.coderarmy.gatekeeper.management.repository.ApiRouteRepository;
 import in.coderarmy.gatekeeper.management.repository.ControlPlaneAuditRecordRepository;
@@ -58,9 +57,6 @@ class RouteServiceTest {
 
     @Mock
     private ObjectMapper objectMapper;
-
-    @Mock
-    private GatewayConfigurationEventService configurationEventService;
 
     @InjectMocks
     private RouteService routeService;
@@ -140,7 +136,6 @@ class RouteServiceTest {
             verify(versionRepository).save(any(RouteConfigurationVersion.class));
             verify(auditService).record(eq(organization), eq("CREATE_ROUTE"), eq("API_ROUTE"),
                     eq("orders-api"), anyLong(), anyString());
-            verify(configurationEventService).publish("CREATED", 10L, "orders-api", 1L);
         }
 
         @Test
@@ -190,7 +185,6 @@ class RouteServiceTest {
             assertThat(response.getRequestsPerMinute()).isEqualTo(200);
 
             verify(versionRepository).save(any(RouteConfigurationVersion.class));
-            verify(configurationEventService).publish("UPDATED", 10L, "orders-api", 2L);
         }
 
         @Test
@@ -210,11 +204,10 @@ class RouteServiceTest {
 
             assertThat(response.isActive()).isFalse();
             assertThat(response.getConfigurationVersion()).isEqualTo(2L);
-            verify(configurationEventService).publish("DEACTIVATED", 10L, "orders-api", 2L);
         }
 
         @Test
-        @DisplayName("delete() removes route, publishes deleted event, and audits")
+        @DisplayName("delete() removes route, saves final version, and audits")
         void delete_successful() {
             ApiRoute existing = createMockRoute(1L, 1L);
             when(tenantContext.getOrganization()).thenReturn(organization);
@@ -223,7 +216,6 @@ class RouteServiceTest {
             routeService.delete(1L);
 
             verify(apiRouteRepository).delete(existing);
-            verify(configurationEventService).publish("DELETED", 10L, "orders-api", 2L);
             verify(auditService).record(eq(organization), eq("DELETE_ROUTE"), eq("API_ROUTE"),
                     eq("orders-api"), anyLong(), anyString());
         }

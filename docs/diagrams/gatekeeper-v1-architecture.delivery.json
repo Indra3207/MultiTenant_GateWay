@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "receiptId": "cab70de3-7f2b-4334-a78d-d512d126cb33",
+  "receiptId": "1387cbdb-a357-4178-ab4b-94767447fda1",
   "status": "current",
   "command": "deliver",
   "type": "architecture",
-  "input": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261108-123600\\candidate.json",
+  "input": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261113-210900\\candidate.json",
   "output": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
   "specification": {
-    "sha256": "bf9f4f0f39e80198d333ee5976c7360dfd424c99fc4faa429706061516afc84e",
-    "bytes": 16698
+    "sha256": "3bf162cf787538458cd3b8d4d94754db110e8d5570378771b649428d37678849",
+    "bytes": 14867
   },
   "artifact": {
-    "sha256": "bb5bc3bc40f889558361953d751fbf30e89abe2244fe07a9b678ade9a3bec668",
-    "bytes": 882171
+    "sha256": "57b2f045c9bfee38a9986f4f0a8325e6480cae32c78f80eed3db099dbd5a1711",
+    "bytes": 872927
   }
 }

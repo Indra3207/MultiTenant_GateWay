@@ -3,6 +3,9 @@ package in.coderarmy.gatekeeper.gateway.client;
 import in.coderarmy.gatekeeper.gateway.dto.GatewayRoute;
 import in.coderarmy.gatekeeper.gateway.dto.LoginRequest;
 import in.coderarmy.gatekeeper.gateway.dto.LoginResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
@@ -16,16 +19,23 @@ import java.util.List;
 @Component
 public class ManagementApiClient {
 
+    private static final Logger logger = LoggerFactory.getLogger(ManagementApiClient.class);
+
     private final RestClient restClient;
     private final String username;
     private final String password;
     private String token;
     private Instant expiresAt;
 
+    @Autowired
     public ManagementApiClient(@Value("${management.api.base-url}") String baseUrl,
                                @Value("${management.api.username}") String username,
                                @Value("${management.api.password}") String password) {
-        this.restClient = RestClient.builder().baseUrl(baseUrl).build();
+        this(RestClient.builder().baseUrl(baseUrl).build(), username, password);
+    }
+
+    public ManagementApiClient(RestClient restClient, String username, String password) {
+        this.restClient = restClient;
         this.username = username;
         this.password = password;
     }
@@ -39,6 +49,7 @@ public class ManagementApiClient {
             if(exception.getStatusCode() != HttpStatus.UNAUTHORIZED) {
                 throw exception;
             }
+            logger.info("Received 401 Unauthorized from Management API. Re-authenticating gateway service credentials...");
             authenticate();
             return requestRoutes();
         }
@@ -52,6 +63,7 @@ public class ManagementApiClient {
     }
 
     private synchronized void authenticate() {
+        logger.info("Authenticating Gateway service with Management API...");
         LoginResponse response = restClient.post()
                 .uri("/api/auth/login")
                 .body(new LoginRequest(username, password))
@@ -65,13 +77,19 @@ public class ManagementApiClient {
 
         token = response.getToken();
         expiresAt = Instant.now().plusSeconds(response.getExpiresInSeconds());
+        logger.info("Gateway service authenticated successfully with role {}", response.getRole());
     }
 
     private List<GatewayRoute> requestRoutes() {
-        return restClient.get()
+        List<GatewayRoute> routes = restClient.get()
                 .uri("/api/gateway/routes")
                 .header("Authorization", "Bearer " + token)
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<GatewayRoute>>() { });
+
+        if (routes == null) {
+            throw new IllegalStateException("API Management returned null routes list");
+        }
+        return routes;
     }
 }

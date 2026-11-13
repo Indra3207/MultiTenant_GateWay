@@ -1,30 +1,49 @@
 {
   "schemaVersion": 1,
-  "ok": true,
+  "ok": false,
   "command": "finalize",
-  "status": "pass",
+  "status": "fail",
   "type": "architecture",
   "quality": "showcase",
   "specification": {
-    "path": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261108-123600\\candidate.json",
-    "sha256": "bf9f4f0f39e80198d333ee5976c7360dfd424c99fc4faa429706061516afc84e",
-    "bytes": 16698
+    "path": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261113-210900\\candidate.json",
+    "sha256": "3bf162cf787538458cd3b8d4d94754db110e8d5570378771b649428d37678849",
+    "bytes": 14867
   },
   "artifact": {
     "path": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
-    "sha256": "bb5bc3bc40f889558361953d751fbf30e89abe2244fe07a9b678ade9a3bec668",
-    "bytes": 882171
+    "sha256": "57b2f045c9bfee38a9986f4f0a8325e6480cae32c78f80eed3db099dbd5a1711",
+    "bytes": 872927
   },
   "gates": {
     "validate": "pass",
     "deliver": "pass",
     "check": "pass",
-    "browser-check": "pass"
+    "browser-check": "fail"
   },
-  "diagnostics": [],
+  "failedStage": "browser-check",
+  "diagnostics": [
+    {
+      "code": "viewer/evidence-path-conflict",
+      "severity": "error",
+      "message": "browser-check will not replace the existing unowned evidence path \"C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.browser-check.json\".",
+      "subject": {
+        "artifact": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
+        "evidencePath": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.browser-check.json"
+      },
+      "evidence": {
+        "reason": {
+          "code": "ownership-artifact-mismatch"
+        }
+      },
+      "supportedFixes": [
+        "move the conflicting file aside, or choose a separate --out-dir, then rerun browser-check"
+      ]
+    }
+  ],
   "diagnosticSummary": {
-    "total": 0,
-    "shown": 0,
+    "total": 1,
+    "shown": 1,
     "truncated": false
   },
   "evidence": {
@@ -37,15 +56,15 @@
     "installedVersion": "3.2.0",
     "availableVersion": "3.2.0",
     "releaseNotes": null,
-    "checkedAt": "2026-11-08T07:16:46.753Z",
-    "source": "network",
+    "checkedAt": "2026-11-13T15:20:50.335Z",
+    "source": "cache",
     "noticeRequired": false,
     "noticeText": null
   },
   "visualReview": "not-requested",
-  "durationMs": 13033,
+  "durationMs": 42566,
   "browserCheck": {
     "requested": true,
-    "ran": true
+    "ran": false
   }
 }

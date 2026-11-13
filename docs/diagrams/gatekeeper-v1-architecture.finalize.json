@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "ok": true,
+  "ok": false,
   "command": "finalize",
-  "status": "pass",
+  "status": "fail",
   "type": "architecture",
   "quality": "showcase",
-  "startedAt": "2026-11-08T07:16:45.961Z",
+  "startedAt": "2026-11-13T15:40:54.799Z",
   "specification": {
-    "path": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261108-123600\\candidate.json",
-    "sha256": "bf9f4f0f39e80198d333ee5976c7360dfd424c99fc4faa429706061516afc84e",
-    "bytes": 16698
+    "path": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261113-210900\\candidate.json",
+    "sha256": "3bf162cf787538458cd3b8d4d94754db110e8d5570378771b649428d37678849",
+    "bytes": 14867
   },
   "artifact": {
     "path": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
-    "sha256": "bb5bc3bc40f889558361953d751fbf30e89abe2244fe07a9b678ade9a3bec668",
-    "bytes": 882171
+    "sha256": "57b2f045c9bfee38a9986f4f0a8325e6480cae32c78f80eed3db099dbd5a1711",
+    "bytes": 872927
   },
   "stages": {
     "validate": {
@@ -27,7 +27,7 @@
         "C:\\Users\\indra\\.gemini\\config\\skills\\archify\\bin\\archify.mjs",
         "deliver",
         "architecture",
-        "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261108-123600\\candidate.json",
+        "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261113-210900\\candidate.json",
         "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
         "--quality",
         "showcase",
@@ -40,8 +40,8 @@
         "ok": true,
         "command": "validate",
         "specification": {
-          "sha256": "bf9f4f0f39e80198d333ee5976c7360dfd424c99fc4faa429706061516afc84e",
-          "bytes": 16698
+          "sha256": "3bf162cf787538458cd3b8d4d94754db110e8d5570378771b649428d37678849",
+          "bytes": 14867
         },
         "validation": {
           "checksPassed": 9,
@@ -56,13 +56,13 @@
     "deliver": {
       "status": "pass",
       "exitCode": 0,
-      "durationMs": 2594,
+      "durationMs": 10739,
       "command": [
         "C:\\Program Files\\nodejs\\node.exe",
         "C:\\Users\\indra\\.gemini\\config\\skills\\archify\\bin\\archify.mjs",
         "deliver",
         "architecture",
-        "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261108-123600\\candidate.json",
+        "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261113-210900\\candidate.json",
         "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
         "--quality",
         "showcase",
@@ -72,19 +72,19 @@
       ],
       "receipt": {
         "schemaVersion": 1,
-        "receiptId": "cab70de3-7f2b-4334-a78d-d512d126cb33",
+        "receiptId": "45e2e970-67b2-4b9f-a0e6-aa14870ba0a5",
         "ok": true,
         "command": "deliver",
         "type": "architecture",
-        "input": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261108-123600\\candidate.json",
+        "input": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261113-210900\\candidate.json",
         "output": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
         "specification": {
-          "sha256": "bf9f4f0f39e80198d333ee5976c7360dfd424c99fc4faa429706061516afc84e",
-          "bytes": 16698
+          "sha256": "3bf162cf787538458cd3b8d4d94754db110e8d5570378771b649428d37678849",
+          "bytes": 14867
         },
         "artifact": {
-          "sha256": "bb5bc3bc40f889558361953d751fbf30e89abe2244fe07a9b678ade9a3bec668",
-          "bytes": 882171
+          "sha256": "57b2f045c9bfee38a9986f4f0a8325e6480cae32c78f80eed3db099dbd5a1711",
+          "bytes": 872927
         },
         "validation": {
           "checksPassed": 9,
@@ -96,9 +96,9 @@
         },
         "evidence": {
           "verified": true,
-          "repository": "https://github.com/gatekeeper/gatekeeper-platform",
-          "revision": "a302da39c05f56ca5434e2be6c11e4b48d544fc5",
-          "references": 16,
+          "repository": "https://github.com/Indra3207/MultiTenant_GateWay",
+          "revision": "173e1089e7437eb829df313062fd287338aa96ff",
+          "references": 13,
           "linkMode": "local-only"
         },
         "update": {
@@ -117,7 +117,7 @@
     "check": {
       "status": "pass",
       "exitCode": 0,
-      "durationMs": 399,
+      "durationMs": 9083,
       "command": [
         "C:\\Program Files\\nodejs\\node.exe",
         "C:\\Users\\indra\\.gemini\\config\\skills\\archify\\bin\\archify.mjs",
@@ -129,8 +129,8 @@
         "ok": true,
         "file": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
         "artifact": {
-          "sha256": "bb5bc3bc40f889558361953d751fbf30e89abe2244fe07a9b678ade9a3bec668",
-          "bytes": 882171
+          "sha256": "57b2f045c9bfee38a9986f4f0a8325e6480cae32c78f80eed3db099dbd5a1711",
+          "bytes": 872927
         },
         "checks": [
           {
@@ -203,10 +203,10 @@
             "minProjectedNodeTextPx": 7.3251700680272105,
             "maxBends": 2,
             "routesOverSuggestedBends": 0,
-            "maxStretch": 1.2,
+            "maxStretch": 1.242,
             "routesOverSuggestedStretch": 0,
             "minSegmentPx": 24,
-            "minInteriorSegmentPx": 113,
+            "minInteriorSegmentPx": 115,
             "shortSegmentCount": 0,
             "shortEndpointSegmentCount": 0,
             "shortInteriorSegmentCount": 0,
@@ -253,18 +253,18 @@
             },
             "minimumSourceTextPx": 8,
             "minimumProjectedTextPx": 7.3251700680272105,
-            "semanticTextCount": 59
+            "semanticTextCount": 49
           },
           "issues": []
         },
         "provenance": "current",
-        "deliveryReceiptId": "cab70de3-7f2b-4334-a78d-d512d126cb33"
+        "deliveryReceiptId": "45e2e970-67b2-4b9f-a0e6-aa14870ba0a5"
       }
     },
     "browser-check": {
-      "status": "pass",
-      "exitCode": 0,
-      "durationMs": 7928,
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": 1723,
       "command": [
         "C:\\Program Files\\nodejs\\node.exe",
         "C:\\Users\\indra\\.gemini\\config\\skills\\archify\\bin\\archify.mjs",
@@ -276,714 +276,62 @@
       "execution": "in-process",
       "receipt": {
         "schemaVersion": 1,
-        "ok": true,
+        "ok": false,
         "command": "browser-check",
         "evidenceKind": "automated-browser",
-        "status": "pass",
+        "status": "fail",
         "visualReview": "not-requested",
         "provenance": "current",
-        "deliveryReceiptId": "cab70de3-7f2b-4334-a78d-d512d126cb33",
+        "deliveryReceiptId": "45e2e970-67b2-4b9f-a0e6-aa14870ba0a5",
         "artifact": {
           "path": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
-          "sha256": "bb5bc3bc40f889558361953d751fbf30e89abe2244fe07a9b678ade9a3bec668",
-          "bytes": 882171
+          "sha256": "57b2f045c9bfee38a9986f4f0a8325e6480cae32c78f80eed3db099dbd5a1711",
+          "bytes": 872927
         },
         "state": {
           "detail": "read",
           "motion": "still"
         },
         "chrome": {
-          "status": "available",
-          "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+          "status": "not-checked",
+          "executable": null
         },
-        "diagnostics": [],
+        "diagnostics": [
+          {
+            "code": "viewer/evidence-path-conflict",
+            "severity": "error",
+            "message": "browser-check will not replace the existing unowned evidence path \"C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.browser-check.json\".",
+            "subject": {
+              "artifact": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
+              "evidencePath": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.browser-check.json"
+            },
+            "evidence": {
+              "reason": {
+                "code": "ownership-artifact-mismatch"
+              }
+            },
+            "supportedFixes": [
+              "move the conflicting file aside, or choose a separate --out-dir, then rerun browser-check"
+            ]
+          }
+        ],
         "containment": {
-          "status": "pass",
+          "status": "fail",
           "policy": "fit-or-reader-declared-readable-vertical-scroll",
-          "viewports": [
-            {
-              "width": 1440,
-              "height": 900,
-              "theme": "light",
-              "innerWidth": 1440,
-              "innerHeight": 900,
-              "scrollWidth": 1440,
-              "scrollHeight": 900,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1376,
-              "diagramWidth": 1346,
-              "pageComposition": {
-                "bodyPaddingPx": 12,
-                "headerPx": 78,
-                "diagramChromePx": 78,
-                "svgPx": 634,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 7.3251700680272105,
-              "minimumProjectedNonEdgeTextPx": 7.691428571428571,
-              "minimumProjectedEdgeTextPx": 7.3251700680272105,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 54,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            },
-            {
-              "width": 1600,
-              "height": 1000,
-              "theme": "light",
-              "innerWidth": 1600,
-              "innerHeight": 1000,
-              "scrollWidth": 1600,
-              "scrollHeight": 1000,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1536,
-              "diagramWidth": 1506,
-              "pageComposition": {
-                "bodyPaddingPx": 64,
-                "headerPx": 86,
-                "diagramChromePx": 84,
-                "svgPx": 709,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 8.4,
-              "minimumProjectedEdgeTextPx": 8,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 54,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            },
-            {
-              "width": 1920,
-              "height": 1080,
-              "theme": "light",
-              "innerWidth": 1920,
-              "innerHeight": 1080,
-              "scrollWidth": 1920,
-              "scrollHeight": 1080,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1802,
-              "diagramWidth": 1772,
-              "pageComposition": {
-                "bodyPaddingPx": 64,
-                "headerPx": 86,
-                "diagramChromePx": 84,
-                "svgPx": 834,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 8.4,
-              "minimumProjectedEdgeTextPx": 8,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 54,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            },
-            {
-              "width": 2048,
-              "height": 1320,
-              "theme": "light",
-              "innerWidth": 2048,
-              "innerHeight": 1320,
-              "scrollWidth": 2048,
-              "scrollHeight": 1320,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1920,
-              "diagramWidth": 1870,
-              "pageComposition": {
-                "bodyPaddingPx": 64,
-                "headerPx": 94,
-                "diagramChromePx": 94,
-                "svgPx": 880,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 8.4,
-              "minimumProjectedEdgeTextPx": 8,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 44,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            }
-          ]
+          "viewports": []
         },
         "themeStates": {
-          "status": "pass",
-          "viewports": [
-            {
-              "width": 1440,
-              "height": 900,
-              "requestedTheme": "light",
-              "resolvedTheme": "light",
-              "ok": true
-            },
-            {
-              "width": 1600,
-              "height": 1000,
-              "requestedTheme": "light",
-              "resolvedTheme": "light",
-              "ok": true
-            },
-            {
-              "width": 1920,
-              "height": 1080,
-              "requestedTheme": "light",
-              "resolvedTheme": "light",
-              "ok": true
-            },
-            {
-              "width": 2048,
-              "height": 1320,
-              "requestedTheme": "light",
-              "resolvedTheme": "light",
-              "ok": true
-            },
-            {
-              "width": 1440,
-              "height": 900,
-              "requestedTheme": "dark",
-              "resolvedTheme": "dark",
-              "ok": true
-            },
-            {
-              "width": 2048,
-              "height": 1320,
-              "requestedTheme": "dark",
-              "resolvedTheme": "dark",
-              "ok": true
-            }
-          ]
+          "status": "fail",
+          "viewports": []
         },
         "readability": {
-          "status": "pass",
+          "status": "fail",
           "minimumProjectedNodeTextPx": 6,
-          "viewports": [
-            {
-              "width": 1440,
-              "height": 900,
-              "theme": "light",
-              "innerWidth": 1440,
-              "innerHeight": 900,
-              "scrollWidth": 1440,
-              "scrollHeight": 900,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1376,
-              "diagramWidth": 1346,
-              "pageComposition": {
-                "bodyPaddingPx": 12,
-                "headerPx": 78,
-                "diagramChromePx": 78,
-                "svgPx": 634,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 7.3251700680272105,
-              "minimumProjectedNonEdgeTextPx": 7.691428571428571,
-              "minimumProjectedEdgeTextPx": 7.3251700680272105,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 54,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            },
-            {
-              "width": 1600,
-              "height": 1000,
-              "theme": "light",
-              "innerWidth": 1600,
-              "innerHeight": 1000,
-              "scrollWidth": 1600,
-              "scrollHeight": 1000,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1536,
-              "diagramWidth": 1506,
-              "pageComposition": {
-                "bodyPaddingPx": 64,
-                "headerPx": 86,
-                "diagramChromePx": 84,
-                "svgPx": 709,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 8.4,
-              "minimumProjectedEdgeTextPx": 8,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 54,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            },
-            {
-              "width": 1920,
-              "height": 1080,
-              "theme": "light",
-              "innerWidth": 1920,
-              "innerHeight": 1080,
-              "scrollWidth": 1920,
-              "scrollHeight": 1080,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1802,
-              "diagramWidth": 1772,
-              "pageComposition": {
-                "bodyPaddingPx": 64,
-                "headerPx": 86,
-                "diagramChromePx": 84,
-                "svgPx": 834,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 8.4,
-              "minimumProjectedEdgeTextPx": 8,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 54,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            },
-            {
-              "width": 2048,
-              "height": 1320,
-              "theme": "light",
-              "innerWidth": 2048,
-              "innerHeight": 1320,
-              "scrollWidth": 2048,
-              "scrollHeight": 1320,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1920,
-              "diagramWidth": 1870,
-              "pageComposition": {
-                "bodyPaddingPx": 64,
-                "headerPx": 94,
-                "diagramChromePx": 94,
-                "svgPx": 880,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 8.4,
-              "minimumProjectedEdgeTextPx": 8,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 44,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            }
-          ]
+          "viewports": []
         },
         "viewerChrome": {
-          "status": "pass",
-          "viewports": [
-            {
-              "width": 1440,
-              "height": 900,
-              "theme": "light",
-              "innerWidth": 1440,
-              "innerHeight": 900,
-              "scrollWidth": 1440,
-              "scrollHeight": 900,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1376,
-              "diagramWidth": 1346,
-              "pageComposition": {
-                "bodyPaddingPx": 12,
-                "headerPx": 78,
-                "diagramChromePx": 78,
-                "svgPx": 634,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 7.3251700680272105,
-              "minimumProjectedNonEdgeTextPx": 7.691428571428571,
-              "minimumProjectedEdgeTextPx": 7.3251700680272105,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 54,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            },
-            {
-              "width": 1600,
-              "height": 1000,
-              "theme": "light",
-              "innerWidth": 1600,
-              "innerHeight": 1000,
-              "scrollWidth": 1600,
-              "scrollHeight": 1000,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1536,
-              "diagramWidth": 1506,
-              "pageComposition": {
-                "bodyPaddingPx": 64,
-                "headerPx": 86,
-                "diagramChromePx": 84,
-                "svgPx": 709,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 8.4,
-              "minimumProjectedEdgeTextPx": 8,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 54,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            },
-            {
-              "width": 1920,
-              "height": 1080,
-              "theme": "light",
-              "innerWidth": 1920,
-              "innerHeight": 1080,
-              "scrollWidth": 1920,
-              "scrollHeight": 1080,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1802,
-              "diagramWidth": 1772,
-              "pageComposition": {
-                "bodyPaddingPx": 64,
-                "headerPx": 86,
-                "diagramChromePx": 84,
-                "svgPx": 834,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 8.4,
-              "minimumProjectedEdgeTextPx": 8,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 54,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            },
-            {
-              "width": 2048,
-              "height": 1320,
-              "theme": "light",
-              "innerWidth": 2048,
-              "innerHeight": 1320,
-              "scrollWidth": 2048,
-              "scrollHeight": 1320,
-              "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
-              "readerLayout": "adaptive",
-              "readerOverflow": null,
-              "readerFit": "intrinsic-height",
-              "ok": true,
-              "readerWidth": 1920,
-              "diagramWidth": 1870,
-              "pageComposition": {
-                "bodyPaddingPx": 64,
-                "headerPx": 94,
-                "diagramChromePx": 94,
-                "svgPx": 880,
-                "cardsPx": 0,
-                "viewBoxHeight": 692
-              },
-              "viewBoxWidth": 1470,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 8.4,
-              "minimumProjectedEdgeTextPx": 8,
-              "minimumProjectedNodeText": "HTTP request :8080",
-              "minimumProjectedNodeTextDetail": "edge",
-              "minimumProjectedNodeTextOwner": {
-                "kind": "edge",
-                "id": "client-to-gateway",
-                "from": "client",
-                "to": "gateway_ctrl"
-              },
-              "minimumRequiredNodeTextPx": 6,
-              "readabilityOk": true,
-              "hasLegend": true,
-              "hasNavigationDock": true,
-              "legendDockIntersectionArea": 0,
-              "dockStageIntersectionArea": 0,
-              "dockStageGap": 10,
-              "requiredDockStageGap": 10,
-              "viewerChromeStageOk": true,
-              "viewerChromeReserve": 44,
-              "viewerChromeActive": true,
-              "viewerChromeOk": true,
-              "resolvedTheme": "light"
-            }
-          ]
+          "status": "fail",
+          "viewports": []
         },
         "captures": {
           "status": "not-requested",
@@ -993,30 +341,50 @@
         "sidecars": {
           "receipt": "gatekeeper-v1-architecture.browser-check.json",
           "files": []
-        }
+        },
+        "error": "browser-check will not replace the existing unowned evidence path \"C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.browser-check.json\"."
       }
     }
   },
   "browserCheck": {
     "requested": true,
-    "ran": true
+    "ran": false
   },
-  "diagnostics": [],
+  "diagnostics": [
+    {
+      "code": "viewer/evidence-path-conflict",
+      "severity": "error",
+      "message": "browser-check will not replace the existing unowned evidence path \"C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.browser-check.json\".",
+      "subject": {
+        "artifact": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
+        "evidencePath": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.browser-check.json"
+      },
+      "evidence": {
+        "reason": {
+          "code": "ownership-artifact-mismatch"
+        }
+      },
+      "supportedFixes": [
+        "move the conflicting file aside, or choose a separate --out-dir, then rerun browser-check"
+      ]
+    }
+  ],
   "evidence": {
     "receipt": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.finalize.json",
     "summaryReceipt": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.finalize-summary.json",
     "browserCheckReceipt": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.browser-check.json"
   },
   "visualReview": "not-requested",
-  "finishedAt": "2026-11-08T07:16:58.994Z",
-  "durationMs": 13033,
+  "failedStage": "browser-check",
+  "finishedAt": "2026-11-13T15:41:37.361Z",
+  "durationMs": 42566,
   "update": {
     "status": "current",
     "installedVersion": "3.2.0",
     "availableVersion": "3.2.0",
     "releaseNotes": null,
-    "checkedAt": "2026-11-08T07:16:46.753Z",
-    "source": "network",
+    "checkedAt": "2026-11-13T15:20:50.335Z",
+    "source": "cache",
     "noticeRequired": false,
     "noticeText": null
   }
