@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\.archify\\architecture-gatekeeper-v1-20261108-123600\\candidate.json",
+    "sha256": "bf9f4f0f39e80198d333ee5976c7360dfd424c99fc4faa429706061516afc84e",
+    "bytes": 16698
+  },
+  "artifact": {
+    "path": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.html",
+    "sha256": "bb5bc3bc40f889558361953d751fbf30e89abe2244fe07a9b678ade9a3bec668",
+    "bytes": 882171
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.finalize.json",
+    "summaryReceipt": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\indra\\Downloads\\Spring-Framework-Full-Course-main\\Spring-Framework-Full-Course-main\\SpringBootProject 05\\code\\gatekeeper\\docs\\diagrams\\gatekeeper-v1-architecture.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-11-08T07:16:46.753Z",
+    "source": "network",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 13033,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}
